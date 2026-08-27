@@ -53,6 +53,8 @@ Why Predicates Matter in CS:
 
 
 
+
+
 Universal & Existential Quantifiers:
 - Notice that P(x) isn't a proposition until a value is plugged in.
 - Another manner to make it a proposition is using a quantifier.
@@ -133,6 +135,8 @@ only integer equivalent, but none are greater.
 
 
 
+
+
 Negating Quantified Statements:
 
 De Morgan's Law for Quantifiers:
@@ -175,4 +179,115 @@ Negate: "some student is enrolled"
 
 
 Pushing Negation Inward:
-- Standard Form
+- Standard Form: Get the ¬ symbol attached only to predicates, not in front of quantifiers.
+
+EX: Rewrite ¬∃x (M(x) ∧ D(x)) so negations appear only inside
+• ¬∃x (M(x) ∧ D(x))
+- Apply Rule 2: flip ∃ into ∀, push ¬ in
+• ∀x ¬(M(x) ∧ D(x))
+- Apply De Morgan's Law on AND
+• ∀x (¬M(x) ∨ ¬D(x))
+
+
+
+
+
+
+
+
+
+
+
+Multiple Variables & Translation
+
+Predicates with Multiple Variables:
+- Each variable in a predicate needs its own quantififer:
+Predicate: M(x, y): "x sent an email to y"
+
+• ∀x ∀y M(x, y): "Every person emailed every person"
+
+
+
+Order of Quantifiers Matters:
+- Swapping ∀ and ∃ usually changes the meaning completely
+
+Predicate: L(x,y): "x likes y"
+
+∀x ∃y L(x, y)
+- "Everyone likes someone"
+
+
+∃y ∀x L(x, y)
+- "There is one person whom everyone likes"
+
+
+
+English Translation:
+Domain: Students at a school. E(x): "x is enrolled". T(x): "x took the test".
+
+English                                         Logic
+"Someone who took test is not enrolled."        ∃x(T(x) ∧ ¬E(x))
+a. The predicates are T(x) then E(x).
+b. The quantifier is existensial (some).
+c. Both propositions must happen together (AND).
+
+
+"All enrolled students took the test"           ∀x(E(x) → T(x))
+a. The predicates are E(x) then T(x).
+b. The quantifier is universal (all).
+c. The compound is conditional, as one event is based on another.
+
+"Everyone who took the test is enrolled"        ∀x (T(x) → E(x))
+a. The predicates are T(x) then E(x).
+b. The quantifier is universal (all).
+c. The coumnd is conditional as taking the test is based on enrollment.
+
+
+"No one took the test"                          ¬∃x T(x) or ∀x ¬T(x)
+
+a. The predicates is T(x) only.
+b. The quantifier can be either or, HOWEVER if its existensial (some) it must be negated to reflect no one.
+As for universal (all), you would only need to negate the predicate to reflect 'x didn't take the test' combinded with the quantifier is 'no one took the test'
+
+
+"At least one enrolled student did              ∃x (E(x) ∧ ¬T(x))
+not take the test"
+a. The predicates are E(x) then T(x),
+b. The quantifier is existensial (some) to reflect 'at least'.
+c. The compound would be AND as both event occured at the same time and T(x) would be negated to reflect the NOT.
+
+
+NOTE:
+Predicates require variables, meanwhile propositions do not.
+
+Therefore the following predicate isn't a proposition, due to the logical expression containing a variable:
+R(x,y): y = 2x -5
+
+The domain for variables x and y is the set of all positive integers.
+Is R(y, 8) (logical expression) a proposition?
+No.
+
+
+HOWEVER, there are FREE variables that aren't propositions and BOUND variables that are propositions:
+Free Variable - The variable is free to take on any value in the domain.
+Bound Variable - The variable is bound to the quantifier. Thus, the statement's truth can be determined.
+
+- ∃xP(x) is a proposition as variable x is bound.
+
+- (∃xS(x) V R(x)) isn't a proposition as R(x) is a free variable.
+
+- ∃x(S(x) V R(x)) is a proposition.
+
+- ∃xQ(x) V ∀xP(x) is a proposition.
+
+
+
+Variable Names:
+The variables bound to the quantifiers must have the same variable to still be considered a proposition.
+EX:
+
+∀xP(x) is the same as ∀yP(y), as the replacement is done for the qunatifier.
+
+∀xP(x) V ∃xQ(x) == ∀xP(x) V ∃xQ(x), is true, as the variable replacement had been done through the quantifier.
+
+∀x(P(x) V Q(x)) == ∀x(P(x) V Q(y)), is NOT TRUE, as the variable replaced at Q(y) was still binded to the qualifiers x variable, thus not a proposition and instead a free variable.
