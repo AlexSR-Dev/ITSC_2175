@@ -84,7 +84,7 @@ Laws: Single Proposition Identities:
 LAW               AND form              OR form
 Identity          p ∧ T = p             p ∨ F = p
 Domination        p ∧ F = F             p ∨ T = T
-Complement        p ∧ ¬p = F            p ∨ ¬p = T
+Complement        p ∧ ¬p = F            p ∨ ¬p = T      ¬T ≡ F, ¬F ≡ T
 Double Negation   ¬(¬p) = p             (no second form)
 
 - Identity = No change.
