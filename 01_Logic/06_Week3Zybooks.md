@@ -246,3 +246,104 @@ Replace the English phrases with variable names:
 4. ¬r ∧ ¬w              De Morgan's Law, 3
 5. ¬w ∧ ¬r              Commutative Law, 4
 6. ¬w                   Simplification, 5
+
+
+
+------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------
+
+
+1.12 Rules of Inference with Quantifiers:
+
+- To apply the rules of inference to quantified expression, like ∀x(P(x) V Q(x)), the quantifier must be removed by plugging
+in a value from the domain to replace the variable x.
+
+- A value that can be pluhhed in for variable x is called an element of the domain x.
+- Elements of the domain can also be introduced within proof with generic names.
+Two Types of named elements used in logical proofs.
+
+• Arbitrary - Element of a domain has no special properties other than those shared by all the elements of the domain.
+• Particular - Element of the domain may have properties that are not shared by all the elements of the dmain.
+
+EX: The domain is the set of all integers, 3 is a particular element of the domain.
+The number 3 is odd, which is not a property that is shared by all integers.
+
+
+
+1.12.1: Definitions of Arbitrary and Particular Elements of a Domain:
+
+1) The domain is the set of all integers:
+3 is an integer.
+Hypothesis
+
+- Particular, any element defined in a hypothesis is a particular element.
+
+
+2) The domain is the set of all employees at a company:
+c is an arbitrary employee of the company. Element defintion.
+
+- Arbitrary.
+
+
+3) The domain is the set of all integers:
+c is a paritcular integer.
+Element defintion.
+
+- Particular.
+
+4) The domain is the set of students enrolled for a class:
+Larry is enrolled in the class. Hypothesis.
+
+- Particular, as any element defined in a hypothesis is a particular element.
+
+
+
+
+Rules Existential instantiation and universal instantiation:
+- Replace a quantified variable with an element of the domain.
+
+
+NOTES -- NOTES
+
+
+1.12.3: Correct and incorrect use of generalization and instantiation:
+
+1. | c is an element | Hypothesis
+2. | P(c)            | Hypothesis
+3. | ∀xP(x)          | Universal generalization, 1, 2
+
+- Incorrect, as an element defined in a hypothesis is always a particular element.
+Also, universal generalization can only be applied if the element is arbitrary.
+
+
+
+1. | c is an element |  Hypothesis
+2. | ∀xP(x)          |  Hypothesis
+3. | P(c)            |  Universal Instantiation, 1, 2
+
+- Correct, as universal instantiation can be used with a particular or arbitrary element.
+
+
+
+1. | c is an element    |   Hypothesis
+2. | P(c)               |   Hypothesis
+3. | d is an element    |   Hypothesis
+4. | Q(d)               |   Hypothesis
+5. | P(c) ∧ Q(d)        |   Conjunction, 2, 4
+6. | ∃x(P(x) ∧ Q(x))    |   Existential generalization, 1, 3, 5
+
+- Incorrect, to apply existential generalization, the variable must replace the same single element throughout the
+entire compound proposition. For instance, x can replace every occurence of c or d. However, here x replaces both c and d, wbich is incorrect.
+
+
+
+1. | ∃xP(x)                                 | Hypothesis
+2. | c is ane element of the domain  ∧P(c)  | Existential instantiation, 1
+3. | c is an element of the domain          | Simplification, 2
+4. | ∃xQ(x)                                 | Hypothesis
+5. | Q(c)                                   | Existential instantiation, 3, 4
+
+- Incorrect, the variable x must be replaced with a new element that has not been used before in the proof.
+
+
+
