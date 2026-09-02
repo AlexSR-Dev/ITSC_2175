@@ -214,13 +214,13 @@ EX:
 q → t               2. p V r            Addition, applied to line 1
 r                   3. (p V r) → q      Hypthesis
 -----------         4. q                Modus ponens, applied to lines 2, 3
-* t                 5. q → r            Hypothesis
+* t                 5. q → t            Hypothesis
                     6. t                Modus Ponens, applied to lines 4 and 5
 
 NOTE: By lines I mean the 1., 2., etc... NOT the propositions of the argument.
 
 
-Enlgish Expresssion:
+English Expresssion:
 If it is raining or windy or both, the game will be cancelled.
 The game will not be cancelled.
 --------------------------------------------------------------
@@ -246,6 +246,56 @@ Replace the English phrases with variable names:
 4. ¬r ∧ ¬w              De Morgan's Law, 3
 5. ¬w ∧ ¬r              Commutative Law, 4
 6. ¬w                   Simplification, 5
+
+
+
+1.11.2: Appyling the Laws of Inference:
+Establish the validity of the following argument:
+¬(p ∧ ¬q)
+p
+----------
+* q V r
+
+1. ¬(p ∧ ¬q)        Hypothesis
+2. ¬p V ¬¬q         De Morgan's Law, 1
+3. ¬p V q           Double Negation, 2
+4. p                Hypothesis
+5. ¬¬p              Double Negation, 4
+6. q                Disjunction Syllogism, 3, 5
+7. q V r            Addition, 6
+
+
+1.11.3: Proof A valid argument:
+Complete the proof that establishes the validity of the argument.
+x -> y
+z V x
+-z
+-------
+* y
+
+1. z V x        Hypothesis
+2. -z           Hypothesis
+3. x            Disjunction Syllogism, 1, 2
+4. x -> y       Hypothesis
+5. y            Modus Ponens, 3, 4
+
+
+1.11.4: Proof A valid argument:
+Complete the proof that establishes the validity of the argument.
+(a V b) -> (c V d)
+¬c
+¬d
+------------------
+* ¬a
+
+1. ¬c                   Hypothesis
+2. ¬d                   Hypothesis
+3. ¬c ∧ ¬d              Conjunction, 1, 2
+4. ¬(c V d)             De Morgan's Law, 3
+5. (a V b) -> (c V d)   Hypothesis
+6. ¬(a V b)             Modus Tollens, 4, 5
+7. ¬a ∧ ¬b              De Morgan's Law, 6
+8. ¬a                   Simplification, 7
 
 
 
@@ -299,11 +349,41 @@ Larry is enrolled in the class. Hypothesis.
 
 
 
+
+
 Rules Existential instantiation and universal instantiation:
 - Replace a quantified variable with an element of the domain.
 
+Rules of Existential generalization and Universal generalization:
+- Replace an element of the domain with a quantified variablle.
 
-NOTES -- NOTES
+
+Rules of Inference                          |   Name            | EX
+--------------------------------------------------------------------------------------------------------------------------
+c is an element (arbitrary or particular)   | Universal         | Izar is a student in the class.
+∀xP(x)                                      | Instantiation     | Every student in the class completed the assignment.
+-----------------------------------------   |                   | Therefore, Izar completed the assignment.
+* P(c)                                      |                   |
+--------------------------------------------------------------------------------------------------------------------------
+                                            |                   |
+c is an arbitrary element                   | Universal         | Let c be an arbitrary integer.
+P(c)                                        | Generalization    | c <= c^2
+-----------------------------------------   |                   | Therefore, every integer is less than or equal to its square.
+* ∀xP(x)                                    |                   |
+--------------------------------------------------------------------------------------------------------------------------
+                                            |                   |
+∃xP(x)                                      | Existential       | There is an integer that is equal to its square.
+------------------------------------------  | Instantiation     | Therefore, c^2 = c, for some integer c.
+* (c is a particular element) ∧ P(c)        |                   |
+--------------------------------------------------------------------------------------------------------------------------
+                                            |                   |
+c is an element (arbitrary or particular)   | Existential       | Sam is a particular student in the class.
+P(c)                                        | Generalization    | Sam completed the assignment.
+------------------------------------------  |                   | Therefore, there is a student in the class who completed the assignment.
+* ∃xP(x)                                    |                   |
+--------------------------------------------------------------------------------------------------------------------------
+
+
 
 
 1.12.3: Correct and incorrect use of generalization and instantiation:
@@ -333,17 +413,271 @@ Also, universal generalization can only be applied if the element is arbitrary.
 6. | ∃x(P(x) ∧ Q(x))    |   Existential generalization, 1, 3, 5
 
 - Incorrect, to apply existential generalization, the variable must replace the same single element throughout the
-entire compound proposition. For instance, x can replace every occurence of c or d. However, here x replaces both c and d, wbich is incorrect.
+entire compound proposition. For instance, x can replace every occurence of c or d. However, here x replaces both c and d, which is incorrect.
 
 
 
-1. | ∃xP(x)                                 | Hypothesis
-2. | c is ane element of the domain  ∧P(c)  | Existential instantiation, 1
-3. | c is an element of the domain          | Simplification, 2
-4. | ∃xQ(x)                                 | Hypothesis
-5. | Q(c)                                   | Existential instantiation, 3, 4
+1. | ∃xP(x)                                     | Hypothesis
+2. | (c is ane element of the domain) ∧ P(c)    | Existential instantiation, 1
+3. | c is an element of the domain              | Simplification, 2
+4. | ∃xQ(x)                                     | Hypothesis
+5. | Q(c)                                       | Existential instantiation, 3, 4
 
-- Incorrect, the variable x must be replaced with a new element that has not been used before in the proof.
+- Incorrect, the order to apply existential instantiation, the variable x must be replaced with a new element that has not been used before in the proof.
+The new element must be given a new name at the place in the proof where existential instantiation is applied.
 
 
 
+1.12.4: Completing a proof validity with quantified statements:
+The proof below establishes the validity of the following argument:
+
+∀x(P(x) ∧ Q(x))
+---------------
+* ∀xP(x)
+
+1. ∀x(P(x) ∧ Q(x))              Hypothesis
+                                - The proposition is given as a hypothesis in the arg to be proven.
+
+2. c is an arbitrary element    Element Definition
+                                - An element can be introduced at any point in a proof.
+
+3. P(c) ∧ Q(c)                  Universal Instantiation, 1, 2
+                                - This replaces a variable with an element, indicating that the rules used is instantiation.
+                                In universal instantiation, the variable can be reaplced by any element introduced earlier in the proof.
+
+4. P(c)                         Simplification, 3
+                                - The rule says for propositions p and q, if (p ∧ q) is true, then p is true.
+
+5. ∀xP(x)                       Universal Generalization, 2, 4
+                                - This replaces an element with a variable.
+                                In universal generalization, an arbitrary element must be used.
+
+
+
+
+1.12.5:
+The proof below establishes the validity of the following argument:
+
+∃xP(x)
+∀xQ(x)
+-----------------
+* ∃x(P(x) ∧ Q(x))
+
+1. ∃xP(x)                                   Hypothesis
+2. (c is a particular element) ∧ P(c)       Existential Instantiation, 1
+                                            - This replaces a variable with an element of the domain, indicating that the rule used is instantiation.
+                                            In existential instantiation, a particular element is introduced that replaces the variable.
+
+3. P(c) ∧ (c is a particular element)       Commutative Law, 2
+4. ∀xQ(x)                                   Hypothesis
+5. c is a particular element                Simplification, 2
+6. Q(c)                                     Universal instantiation, 4, 5
+                                            - This replaces a variable with an element of the domain, indicating that the rule used is instantiation.
+                                            In universal instantiation, an arbitrary or particular element may be used.
+
+7. P(c)                                     Simplification, 3
+8. P(c) ∧ Q(c)                              Conjunction, 6, 7
+9. ∃x(P(x) ∧ Q(x))                          Existential generalization, 5, 8
+                                            - This step replaces an element of the domain with a variable.
+                                            In existential generalization, an abitrary or particular element may be used.
+
+
+
+
+1.12.6: Completing a Proof of Validity with Quantified Statements:
+The following argument is expressed in English. The domain is the set of students enrolled in a class:
+
+Every student who stayed up too late missed the test.
+Juan is enrolled in the class.
+Juan did not miss the test.
+-----------------------------------------------------
+* Some student did not stay up too late.
+
+-The first step in proving that the argument is valid is to determine the form of the argument. Define the folloinw two predicates:
+S(x): x stayed up too late.
+M(x): x missed the test.
+
+The form of the argument is:
+∀x(S(x) -> M(x))
+Juan, a student in the class
+-M(Juan)
+----------------------------
+* ∃x-S(x)
+
+- Now complete the proof of the argument:
+
+1. ∀x(S(x) -> M(x))                     Hypothesis
+2. Juan, a student in the class         Hypothesis
+3. S(Juan) -> M(Juan)                   Universal Instantiation, 1, 2        
+                                        - This replaces a variable with an element of the domain, indicating that the rule is instantiation.
+                                        Universal instantiation can be used with a particular or arbitrary element of the domain.
+
+
+4. -M(Juan)                             Hypothesis
+5. -S(Juan)                             Modus Tollens, 3, 4
+                                        - S(Juan) and M(Juan) are both propositions.
+                                        This rules says that the two propositions
+                                        S(Juan) -> M(Juan)
+                                        -M(Juan), implies -S(Juan).
+
+6. ∃x-S(x)                              Existential Generalization, 2, 5
+                                        - This replaces an element of the domain with a variable, indicating that the rule used is generalization.
+                                        Existential generalization can be used with a particular or abitrary element of the domain.
+
+
+
+
+
+
+1.12.8: Proof A valid argument with quantified statements:
+Complete the proof that establishes the validity of the argument below by adding the correct justification:
+
+∃x(P(x) V Q(x))
+∀x-P(x)
+---------------
+* ∃xQ(x)
+
+1. ∃x(P(x) V Q(x))                                  Hypothesis
+2. (c is a particular element) ∧  (P(x) V Q(x))     Existential Instantiation, 1
+3. c is a particular element                        Simplification, 2
+4. (P(x) V Q(x)) ∧ (c is a particular element)      Commutative Law, 2
+5. P(x) V Q(x)                                      Simplification, 4
+6. ∀x-P(x)                                          Hypothesis
+7. -P(c)                                            Universal Instantiation, 3, 6
+8. Q(x)                                             Disjunction Syllogism, 5, 7
+9. ∃xQ(x)                                           Existential Generalization, 3, 8
+
+
+1.12.9: Complete the proof that establishes the validity of the argument:
+∀x(P(x) -> Q(x))
+-∀xQ(x)
+----------------
+* ∃x-P(x)
+
+1. -∀xQ(x)                                      Hypothesis
+2. ∃x-Q(x)                                      De Morgan's Law, 1
+3. (c is a particular element) ∧ -Q(c)          Existential Instantiation, 2
+4. c is a particular element                    Simplification, 3
+5. -Q(c) ∧ (c is a particular element)          Commutative Law, 3
+6. -Q(c)                                        Simplification, 5
+7) ∀x(P(x) -> Q(x))                             Hypothesis
+8) P(c) -> Q(c)                                 Universal Instantiation, 4, 7
+9) -P(c) V Q(c)                                 Conditional Identity, 8
+10) Q(c) V -P(c)                                Commutative Law, 9
+11) -P(c)                                       Disjunctive Syllogism, 6, 10
+12) ∃x-P(x)                                     Existential Generalization, 4, 11
+
+
+
+
+
+
+1.12.10: Correct and Incorrect use of Generalization and Instantiation:
+
+1. ∃xP(x)                                       Hypothesis
+2. (c is a particular element) ∧ P(c)           Existential instantiation, 1
+3. ∃xQ(x)                                       Hypothesis
+4. (c is a particular element) ∧ Q(c)           Existential Instantiation, 3
+
+- Incorrect, as a new element with a new name must be used for each use of existential instantiation.
+An example would be variable name 'd', used in the last line would become correct: (d is a particular element) ∧ Q(d) 
+
+
+
+
+1.12.1: Rules of Inference with Quantifiers
+
+1)
+The domain is the set of professionals attending a conference.
+
+Every delegate did not register early.
+Every delegate who asked questions either registered early or gave a presentation (or both).
+--------------------------------------------------------------------------------------------
+* Every delegate who asked questions gave a presentation.
+
+
+Form of the Argument:
+∀x(-Q(x))
+∀x(P(x) -> (Q(x) V R(x)))
+-------------------------
+* ∀x(P(x) -> R(x))
+
+Select the definitions for predicates P, Q, and R.
+P(x) : x asked questions.
+Q(x) : x registered early.
+R(x) : x gave a presentation.
+
+
+
+
+2)
+The following argument is invalid
+
+∃x(P(x) ∧ Q(x))
+∀x(Q(x) -> P(x))
+----------------
+* ∀xP(x)
+
+- Suppose that the domain of x is the set {a, b}. Fill the table values that prove that the argument is invalid.
+     P  |  Q  |
+---------------
+a |  T  |  T  |
+b |  F  |  F  |
+
+∃x(P(x) ∧ Q(x)) is true because P(a) ∧ Q(a) is true.
+∀x(Q(x) -> P(x)) is true because Q(x) -> Q(x) is true for both inputs a and b.
+However, since P(b) = F, ∀xP(x) is false.
+
+In-Depth Explanation:
+First Hypothesis:
+∃x(P(x) ∧ Q(x)), at least a domain is true, in this case would be row 'a' entirely True. To satisify the proposition.
+
+Check a: P(a) ∧ Q(a)
+         T ∧ T = T
+
+∃x(P(x) ∧ Q(x)) = T
+
+
+Second Hypothesis:
+∀x(Q(x) -> P(x)), every domain must evaluate as true.
+
+check a: T -> T = T
+check b: F -> F = T
+
+- Why F, F, for row b is to prove the counterexample to the conclusion.
+Since both are true: ∀x(Q(x) -> P(x)) = T
+
+
+Combine the Hypotheses with OR: T V T = T, Hypothesis = T.
+
+Now evaluate the conclusion: ∀xP(x)
+Check: P(a) = T
+HOWEVER, P(b) = F
+
+As the conclusion, uses the universal quantifier it means every element must be true: ∀xP(x) = F
+
+
+
+3)
+The following argument is invalid:
+
+∃x(P(x) ∧ -Q(x))
+∀x(Q(x) -> P(x))
+----------------
+* ∀x-P(x)
+
+The domain of x is the set of positive integers. Select a definition for each predicate P and Q that proves that the argument is invalid.
+
+P(x): x is a composite.
+Q(x): x is a multiple of 4.
+
+For the first hypothesis: ∃x(P(x) ∧ -Q(x))
+- It is true there exists a positive integer thats x is composite and is not a multiple of 4. Example is 6.
+
+For the second hypothesis: ∀x(Q(x) -> P(x))
+- It is true that for every positive integer, if x is a multiple of 4, then x is composite to true for all in the proposition.
+
+The conclusion: ∀x-P(x)
+- Is false as not every integer is not composite, for instance 4.
+
+Thus the hypotheses are true and the conclusion is false, the argument is invalid.
